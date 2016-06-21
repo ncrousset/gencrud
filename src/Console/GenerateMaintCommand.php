@@ -9,6 +9,7 @@
 namespace Ncrousset\GenCRUD\Console;
 
 use Illuminate\Console\Command;
+use Ncrousset\GenCRUD\Generate;
 
 class GenerateMaintCommand extends Command
 {
@@ -42,8 +43,15 @@ class GenerateMaintCommand extends Command
      */
     public function handle()
     {
+        $generate = new Generate();
+
         if($name = $this->argument('name')) {
-            $this->info("Nombre de archivo $name");
+
+            if(!$generate->isExists()) {
+                $generate->createDirectory();
+            }else {
+                echo "Existe";
+            }
 
             if($table = $this->option('table')) {
                 $this->info("Table name: $table");
