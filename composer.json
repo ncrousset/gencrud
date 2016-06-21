@@ -1,0 +1,18 @@
+{
+  "name": "ncrousset/gencrud",
+  "description": "Generate maintaining a particular table",
+  "keywords": ["laravel", "crud", "api"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rudys Natanael Acosta Crousset",
+      "email": "natanael926@gmail.com"
+    }
+  ],
+  "version": "0.0.1",
+  "autoload" : {
+    "psr-4" : {
+      "Ncrousset\\GenCRUD\\": "src/"
+    }
+  }
+}
