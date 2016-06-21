@@ -44,6 +44,10 @@ class GenerateMaintCommand extends Command
     {
         if($name = $this->argument('name')) {
             $this->info("Nombre de archivo $name");
+
+            if($table = $this->option('table')) {
+                $this->info("Table name: $table");
+            }
         }
 
         $this->info("Fin");
