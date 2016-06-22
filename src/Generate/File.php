@@ -31,6 +31,12 @@ class File extends Generate
         return parent::isExists();
     }
 
+    /**
+     *
+     * @param $nameClass
+     * @param $table
+     * @return bool
+     */
     public function generate($nameClass, $table)
     {
         if($this->create($nameClass)) {
@@ -41,7 +47,7 @@ class File extends Generate
     }
 
     /**
-     *  Create de new file .php
+     * Create de new file .php
      *
      * @param $name
      */
@@ -51,6 +57,10 @@ class File extends Generate
         return touch($this->fileName);
     }
 
+    /**
+     * @param $nameClass
+     * @param $table
+     */
     private function createClass($nameClass, $table)
     {
         if(file_exists($this->fileName)) {
@@ -67,11 +77,9 @@ class File extends Generate
             $this->addMethod($file, 'edit');
             $this->addMethod($file, 'create');
 
-            $this->closeClass();
+            $this->closeClass($file);
 
             fclose($file);
         }
     }
-
-
 }

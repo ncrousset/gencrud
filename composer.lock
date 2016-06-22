@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a2f2dc53e806f80b9b396807cefc5fd9",
-    "content-hash": "5a8ecf63677d9f7386b98fa7dbb3baf5",
+    "hash": "40d2b7cfb4bda5f3ff565470b283e1f1",
+    "content-hash": "a64c8041cab80e4f3eadf0fa520cc353",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -325,6 +325,51 @@
                 "sql"
             ],
             "time": "2016-02-24 14:58:10"
+        },
+        {
+            "name": "illuminate/events",
+            "version": "v5.1.31",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/events.git",
+                "reference": "34e549cd4dcccd210324ebd4ea5f530bd7c3bbb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/34e549cd4dcccd210324ebd4ea5f530bd7c3bbb1",
+                "reference": "34e549cd4dcccd210324ebd4ea5f530bd7c3bbb1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.1.*",
+                "illuminate/contracts": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Events\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "The Illuminate Events package.",
+            "homepage": "http://laravel.com",
+            "time": "2015-12-30 20:19:08"
         },
         {
             "name": "illuminate/filesystem",
