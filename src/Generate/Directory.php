@@ -2,28 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: rudys
- * Date: 21/06/16
- * Time: 04:23 PM
+ * Date: 22/06/16
+ * Time: 09:42 AM
  */
 
-namespace Ncrousset\GenCRUD;
+namespace Ncrousset\GenCRUD\Generate;
 
-class Generate
+use Ncrousset\GenCRUD\Generate\Generate;
+
+class Directory extends Generate
 {
-    protected $path = 'App/Maintenance';
-
-    public function __construct()
-    {
-
-    }
 
     /**
-     *
      * @return bool
      */
     public function isExists()
     {
-        return file_exists($this->path);
+        return parent::isExists();
     }
 
     /**

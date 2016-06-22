@@ -10,6 +10,7 @@ namespace Ncrousset\GenCRUD\Console;
 
 use Illuminate\Console\Command;
 use Ncrousset\GenCRUD\Generate;
+use Ncrousset\GenCRUD\Generate\Directory;
 
 class GenerateMaintCommand extends Command
 {
@@ -43,15 +44,15 @@ class GenerateMaintCommand extends Command
      */
     public function handle()
     {
-        $generate = new Generate();
+        $dir = new Directory();
 
         if($name = $this->argument('name')) {
 
-            if(!$generate->isExists()) {
-                $generate->createDirectory();
-            }else {
-                echo "Existe";
+            if(!$dir->isExists()) {
+                $dir->createDirectory();
             }
+
+//            $generate->createFile('name');
 
             if($table = $this->option('table')) {
                 $this->info("Table name: $table");
