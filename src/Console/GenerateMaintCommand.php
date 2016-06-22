@@ -9,8 +9,8 @@
 namespace Ncrousset\GenCRUD\Console;
 
 use Illuminate\Console\Command;
-use Ncrousset\GenCRUD\Generate;
 use Ncrousset\GenCRUD\Generate\Directory;
+use Ncrousset\GenCRUD\Generate\File;
 
 class GenerateMaintCommand extends Command
 {
@@ -50,6 +50,14 @@ class GenerateMaintCommand extends Command
 
             if(!$dir->isExists()) {
                 $dir->createDirectory();
+            }
+
+            if((new File)->isExists($name)) {
+                $this->error("File already exists " . $name);
+                $this->info("Fin");
+                return false;
+            } else {
+                (new File)->create($name);
             }
 
 //            $generate->createFile('name');

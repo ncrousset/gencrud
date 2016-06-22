@@ -21,21 +21,5 @@ abstract class Generate
         return file_exists($this->path);
     }
     
-    public function createFile($name)
-    {
-        $this->validateNameFile();
-    }
-
-    private function validateNameFile()
-    {
-        if(is_dir($this->path)) {
-            if($dir = opendir($this->path)) {
-                while(($file = readdir($dir)) !== false) {
-                    echo "filename: $file ". filetype($this->path.$file) . "\n";
-                }
-
-                closedir($dir);
-            }
-        }
-    }
+    
 }

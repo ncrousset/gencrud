@@ -8,8 +8,24 @@
 
 namespace Ncrousset\GenCRUD\Generate;
 
+use Ncrousset\GenCRUD\Generate\Generate;
 
-class File
+class File extends Generate
 {
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function isExists($name)
+    {
+        $this->path = $this->path . $name . '.php';
+        return parent::isExists();
+    }
+
+    public function create($name)
+    {
+        
+        $this->validateNameFile();
+    }
 
 }
