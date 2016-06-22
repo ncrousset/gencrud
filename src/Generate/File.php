@@ -9,9 +9,18 @@
 namespace Ncrousset\GenCRUD\Generate;
 
 use Ncrousset\GenCRUD\Generate\Generate;
+use Ncrousset\GenCRUD\Generate\WriteClass;
 
 class File extends Generate
 {
+
+    use WriteClass;
+    
+    /**
+     * @var string
+     */
+    private $fileName = "";
+
     /**
      * @param $name
      * @return bool
@@ -22,15 +31,45 @@ class File extends Generate
         return parent::isExists();
     }
 
+    public function generate($nameClass, $table)
+    {
+        if($this->create($nameClass)) {
+            $this->createClass($nameClass, $table);
+        }
+
+        return true;
+    }
+
     /**
      *  Create de new file .php
      *
      * @param $name
      */
-    public function create($name)
+    private function create($name)
     {
-        $fileName = $name . '.php';
-        return touch($this->path . $fileName);
+        $this->fileName = $this->path . $name . '.php';
+        return touch($this->fileName);
     }
+
+    private function createClass($nameClass, $table)
+    {
+        if(file_exists($this->fileName)) {
+            $file = fopen($this->fileName, "a");
+            $this->initPhpFile($file);
+            $this->initClass($file, $nameClass);
+
+            if($table !== null) {
+                $this->addAtribute($file, '$table', $table);
+            }
+
+            $this->addMethod($file, 'index');
+            $this->addMethod($file, 'show');
+            $this->addMethod($file, 'edit');
+            $this->addMethod($file, 'create');
+
+            fclose($file);
+        }
+    }
+
 
 }

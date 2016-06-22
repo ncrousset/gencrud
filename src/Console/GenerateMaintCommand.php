@@ -57,7 +57,14 @@ class GenerateMaintCommand extends Command
                 $this->info("Fin");
                 return false;
             } else {
-                if((new File)->create($name)) {
+
+                $table = null;
+
+                if($table = $this->option('table')) {
+                    $this->info("Table name: $table");
+                }
+
+                if((new File)->generate($name, $table)) {
                     $this->info("Created ". $name);
                 }else {
                     $this->error("Error creating the file " . $name);
