@@ -68,7 +68,7 @@ trait WriteClass
      */
     public function closeClass($file)
     {
-        fwrite($file, PHP_EOL."\r}".PHP_EOL);
+        fwrite($file, "\r}");
     }
 
     /**
