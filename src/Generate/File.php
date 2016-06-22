@@ -56,7 +56,7 @@ class File extends Generate
         if(file_exists($this->fileName)) {
             $file = fopen($this->fileName, "a");
             $this->initPhpFile($file);
-            $this->initClass($file, $nameClass);
+            $this->openClass($file, $nameClass);
 
             if($table !== null) {
                 $this->addAtribute($file, '$table', $table);
@@ -66,6 +66,8 @@ class File extends Generate
             $this->addMethod($file, 'show');
             $this->addMethod($file, 'edit');
             $this->addMethod($file, 'create');
+
+            $this->closeClass();
 
             fclose($file);
         }

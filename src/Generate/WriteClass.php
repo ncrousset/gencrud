@@ -18,7 +18,7 @@ trait WriteClass
      * @param $file
      * @param $nameClass
      */
-    public function initClass($file, $nameClass)
+    public function openClass($file, $nameClass)
     {
         fwrite($file, "class $nameClass".PHP_EOL. "{".PHP_EOL);
     }

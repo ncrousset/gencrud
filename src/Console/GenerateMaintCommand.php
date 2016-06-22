@@ -73,8 +73,6 @@ class GenerateMaintCommand extends Command
                 }
             }
 
-//            $generate->createFile('name');
-
             if($table = $this->option('table')) {
                 $this->info("Table name: $table");
             }
