@@ -22,10 +22,15 @@ class File extends Generate
         return parent::isExists();
     }
 
+    /**
+     *  Create de new file .php
+     *
+     * @param $name
+     */
     public function create($name)
     {
-        
-        $this->validateNameFile();
+        $fileName = $name . '.php';
+        return touch($this->path . $fileName);
     }
 
 }
