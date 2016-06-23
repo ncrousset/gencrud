@@ -73,12 +73,12 @@ class File extends Generate
                 $this->addAtribute($file, '$table', $table);
             }
 
-            $colums = (new TableSchema($table))->getSchema();
+            $columns = (new TableSchema($table))->getSchema();
 
-            $this->addMethod($file, 'index');
-            $this->addMethod($file, 'show');
-            $this->addMethod($file, 'edit');
-            $this->addMethod($file, 'create');
+            $this->addMethod($file, 'index', $columns);
+            $this->addMethod($file, 'show', $columns);
+            $this->addMethod($file, 'edit', $columns);
+            $this->addMethod($file, 'create', $columns);
 
             $this->closeClass($file);
 

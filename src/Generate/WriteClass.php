@@ -50,12 +50,24 @@ trait WriteClass
      * @param $nameMethod
      * @param string $visibility public|private|protected
      */
-    public function addMethod($file, $nameMethod, $visibility = "public")
+    public function addMethod($file, $nameMethod, $columns, $visibility = "public")
     {
         fwrite($file, $this->comment($nameMethod)); // Crea de comment
         $str = PHP_EOL. "\t". "$visibility function $nameMethod()";
         $str .= PHP_EOL. "\t{";
-        $str .=  PHP_EOL."\t\t//Code";
+
+        if($columns !== false) {
+            $str .= PHP_EOL."\t\t //Columns the table";
+            $str .= PHP_EOL . "\t\t".'$rows = [';
+
+            // Generate rows for your crud
+            foreach ($columns as $column) {
+                $str .= $this->generateRows($column);
+            }
+
+            $str .= PHP_EOL."\t\t];";
+        }
+
         $str .= PHP_EOL.PHP_EOL."\t}".PHP_EOL;
 
         fwrite($file, $str);
@@ -69,6 +81,24 @@ trait WriteClass
     public function closeClass($file)
     {
         fwrite($file, "\r}");
+    }
+
+    /**
+     *
+     */
+    private function generateRows($row)
+    {
+        $str = PHP_EOL . "\t\t\t 'name' => ";
+        $str .= "[";
+        $str .= PHP_EOL . "\t\t\t\t 'type' => 'int', ";
+        $str .= PHP_EOL . "\t\t\t\t 'null' => false, ";
+        $str .= PHP_EOL . "\t\t\t\t 'primary' => false, ";
+        $str .= PHP_EOL . "\t\t\t\t 'default' => 'hola', ";
+        $str .= PHP_EOL . "\t\t\t\t 'auto_increment' => false, ";
+        $str .= PHP_EOL . "\t\t\t\t 'hidden' => false";
+        $str .= PHP_EOL."\t\t\t ]";
+
+        return $str. ',';
     }
 
     /**
