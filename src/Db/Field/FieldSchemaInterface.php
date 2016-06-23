@@ -26,14 +26,7 @@ interface FieldSchemaInterface
      * @return mixed
      */
     public function primary();
-
-    /**
-     * Get the colum type
-     *
-     * @return string
-     */
-    public function getType();
-
+    
     /**
      * Display the column in the form, default value is true
      *
