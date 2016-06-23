@@ -6,11 +6,7 @@ use Ncrousset\GenCRUD\Db\Field\FieldSchemaInterface;
 
 class Field implements FieldSchemaInterface
 {
-
-    /**
-     * @var string
-     */
-    public $field = "";
+    
 
     /**
      * @var bool
@@ -26,17 +22,7 @@ class Field implements FieldSchemaInterface
      * @var bool
      */
     public $hidden = true;
-
-    /**
-     * Set the value name column
-     *
-     * @param $field
-     * @return void
-     */
-    public function field($field)
-    {
-        $this->field = $field;
-    }
+    
 
     /**
      * @return void
