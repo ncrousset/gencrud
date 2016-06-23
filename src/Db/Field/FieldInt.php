@@ -1,17 +1,27 @@
 <?php
 
-
 namespace Ncrousset\GenCRUD\Db\Field;
 
-use Ncrousset\GenCRUD\Db\Field\FieldSchemaInterface;
-use Ncrousset\GenCRUD\Db\Field\Field;
-
-class FieldInt extends Field implements FieldSchemaInterface
+class FieldInt
 {
+    /**
+     * @var string
+     */
+    public $type = 'int';
 
     /**
      * @var string
      */
-     public $type = 'int';
+    public $field;
+
+    /**
+     * FieldInt constructor.
+     *
+     * @param string $field
+     */
+    public function __construct($field = "id")
+    {
+        $this->field = $field;
+    }
 
 }
