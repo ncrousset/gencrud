@@ -4,15 +4,7 @@ namespace Ncrousset\GenCRUD\Db\Field;
 
 interface FieldSchemaInterface
 {
-
-    /**
-     * Name of column
-     *
-     * @param $field
-     * @return mixed
-     */
-    public function field($field);
-
+    
     /**
      * if is null the column, value for default is false
      *
