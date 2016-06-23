@@ -1,15 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rudys
- * Date: 23/06/16
- * Time: 09:44 AM
- */
-
-namespace Ncrousset\GenCRUD\Db;
 
 
-class FieldInt
+namespace Ncrousset\GenCRUD\Db\Field;
+
+use Ncrousset\GenCRUD\Db\Field\FieldSchemaInterface;
+use Ncrousset\GenCRUD\Db\Field\Field;
+
+class FieldInt extends Field implements FieldSchemaInterface
 {
+
+    /**
+     * @var string
+     */
+     public $type = 'int';
 
 }
