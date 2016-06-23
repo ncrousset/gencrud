@@ -21,8 +21,18 @@ class TableSchema
         $this->shema = (Capsule::schema());
     }
 
+    /**
+     * @return bool
+     */
     public function getSchema()
     {
+        if(!$this->hasTable()) {
+            return false;
+        }
+
+        $colums = Capsule::select("SHOW COLUMNS FROM $this->tableName");
+
+        return $colums;
 
     }
 

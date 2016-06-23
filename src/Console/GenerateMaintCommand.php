@@ -68,15 +68,6 @@ class GenerateMaintCommand extends Command
                 }
 
                 if((new File)->generate($name, $table)) {
-                    if((new TableSchema('users'))->hasTable()) {
-                        echo 'existe';
-                    }else {
-                        echo 'no existe';
-                    }
-//                    $results = Capsule::select('select * from maintence');
-
-//                    var_dump($results);
-
                     $this->info("Created ". $name);
                 }else {
                     $this->error("Error creating the file " . $name);
