@@ -33,7 +33,6 @@ trait WriteClass
      */
     public function addAtribute($file, $nameAtrib, $valueAtrib, $visibility = "protected")
     {
-
         $valueFormat = (gettype($valueAtrib) === "string")
                 ? "'$valueAtrib'"
                 : $valueAtrib ;
@@ -57,6 +56,7 @@ trait WriteClass
         $str .= PHP_EOL. "\t{";
 
         if($columns !== false) {
+
             $str .= PHP_EOL."\t\t //Columns the table";
             $str .= PHP_EOL . "\t\t".'$rows = [';
 
@@ -70,6 +70,22 @@ trait WriteClass
 
         $str .= PHP_EOL.PHP_EOL."\t}".PHP_EOL;
 
+        fwrite($file, $str);
+    }
+
+    /**
+     * @param $file
+     * @param $columns
+     */
+    public function createRows($file, $columns)
+    {
+        $str = PHP_EOL."\tprivate ".'$rows = [';
+
+        foreach ($columns as $column) {
+            $str .= PHP_EOL."\t\t\t"."'name' => (new FieldSchema(FieldInt)),";
+        }
+
+        $str .= PHP_EOL."\t];";
         fwrite($file, $str);
     }
 
@@ -111,7 +127,8 @@ trait WriteClass
             'index' => 'Configuration parameters for listing data',
             'show'  => 'Configuration parameters for show data',
             'edit'  => 'Configuration parameters for form edit data',
-            'create'  => 'Configuration parameters for form create data'
+            'create'  => 'Configuration parameters for form create data',
+            'shema' => 'Schema the table'
         ];
 
         $str = PHP_EOL."\t/**".PHP_EOL;

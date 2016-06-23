@@ -75,6 +75,8 @@ class File extends Generate
 
             $columns = (new TableSchema($table))->getSchema();
 
+            $this->createRows($file, $columns);
+
             $this->addMethod($file, 'index', $columns);
             $this->addMethod($file, 'show', $columns);
             $this->addMethod($file, 'edit', $columns);
