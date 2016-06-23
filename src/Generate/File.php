@@ -10,6 +10,7 @@ namespace Ncrousset\GenCRUD\Generate;
 
 use Ncrousset\GenCRUD\Generate\Generate;
 use Ncrousset\GenCRUD\Generate\WriteClass;
+use Ncrousset\GenCRUD\Db\TableSchema;
 
 class File extends Generate
 {
@@ -71,6 +72,8 @@ class File extends Generate
             if($table !== null) {
                 $this->addAtribute($file, '$table', $table);
             }
+
+            $colums = (new TableSchema($table))->getSchema();
 
             $this->addMethod($file, 'index');
             $this->addMethod($file, 'show');
