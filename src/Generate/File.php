@@ -72,10 +72,8 @@ class File extends Generate
             if($table !== null) {
                 $this->addAtribute($file, '$table', $table);
             }
-
+        
             $columns = (new TableSchema($table))->getSchema();
-
-            $this->createRows($file, $columns);
 
             $this->addMethod($file, 'index', $columns);
             $this->addMethod($file, 'show', $columns);

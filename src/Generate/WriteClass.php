@@ -65,20 +65,28 @@ trait WriteClass
             // Generate rows for your crud
             foreach ($columns as $key => $column) {
                 $classFieldSchema = 'FieldSchema';
-                $classFieldInt = 'FieldInt';
 
-            var_dump($column);
+                $typeField = [
+                    'int' => 'FieldInt',
+                    'string' => 'FieldString',
+                    'text' => 'FieldText',
+                    'blob' => 'FIeldBoolean'
+                ];
+
+                $classFieldInt = 'FieldInt'; //Depends on $colums->Type
 
                 $strEntity = "$%s = (new %s(new %s('%s')));";
-                $str .= PHP_EOL."\t\t". sprintf($strEntity, $column->Field, $classFieldSchema, $classFieldInt, $column->Field);
-                
+                $str .= PHP_EOL."\t\t". sprintf(
+                        $strEntity, $column->Field, $classFieldSchema,
+                        $classFieldInt, $column->Field);
+
+                $str .= ($column->Null !== 'YES') ?"":PHP_EOL."\t\t".sprintf("$%s->nullable();", $column->Field);
+                $str .= ($column->Key !== 'PRI') ?"":PHP_EOL."\t\t".sprintf("$%s->primary();", $column->Field);
 
                 $str .= PHP_EOL;
             }
         }
-
-        $str .= PHP_EOL.PHP_EOL."\t}".PHP_EOL;
-
+        $str .= PHP_EOL."\t}".PHP_EOL;
         fwrite($file, $str);
     }
 

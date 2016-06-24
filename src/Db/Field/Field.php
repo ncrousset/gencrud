@@ -6,7 +6,6 @@ use Ncrousset\GenCRUD\Db\Field\FieldSchemaInterface;
 
 class Field implements FieldSchemaInterface
 {
-    
 
     /**
      * @var bool
