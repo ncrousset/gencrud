@@ -2,6 +2,9 @@
 
 namespace Ncrousset\GenCRUD\Generate;
 
+use Ncrousset\GenCRUD\Db\Field\FieldSchema;
+use Ncrousset\GenCRUD\Db\Field\FieldInt;
+
 trait WriteClass
 {
     /**
@@ -58,14 +61,20 @@ trait WriteClass
         if($columns !== false) {
 
             $str .= PHP_EOL."\t\t //Columns the table";
-            $str .= PHP_EOL . "\t\t".'$rows = [';
 
             // Generate rows for your crud
-            foreach ($columns as $column) {
-                $str .= $this->generateRows($column);
-            }
+            foreach ($columns as $key => $column) {
+                $classFieldSchema = 'FieldSchema';
+                $classFieldInt = 'FieldInt';
 
-            $str .= PHP_EOL."\t\t];";
+            var_dump($column);
+
+                $strEntity = "$%s = (new %s(new %s('%s')));";
+                $str .= PHP_EOL."\t\t". sprintf($strEntity, $column->Field, $classFieldSchema, $classFieldInt, $column->Field);
+                
+
+                $str .= PHP_EOL;
+            }
         }
 
         $str .= PHP_EOL.PHP_EOL."\t}".PHP_EOL;
