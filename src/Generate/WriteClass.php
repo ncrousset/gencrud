@@ -2,9 +2,6 @@
 
 namespace Ncrousset\GenCRUD\Generate;
 
-use Ncrousset\GenCRUD\Db\Field\FieldSchema;
-use Ncrousset\GenCRUD\Db\Field\FieldInt;
-
 trait WriteClass
 {
     /**
@@ -73,6 +70,8 @@ trait WriteClass
                     'blob' => 'FIeldBoolean'
                 ];
 
+                var_dump($this->getTypeAndLenght($column->Type));
+
                 $classFieldInt = 'FieldInt'; //Depends on $colums->Type
 
                 $strEntity = "$%s = (new %s(new %s('%s')));";
@@ -114,6 +113,29 @@ trait WriteClass
     public function closeClass($file)
     {
         fwrite($file, "\r}");
+    }
+
+    /**
+     * Get the type from columns and lenght
+     *
+     * @param $stringType
+     * @return array
+     */
+    private function getTypeAndLenght($stringType)
+    {
+        $pos = strpos($stringType, '(');
+
+        //if $pos is false the type is bool
+        if($pos) {
+            $type = substr($stringType, 0, $pos);
+            $lenght = substr($stringType, ($pos + 1));
+            $lenght = (int) str_replace(')', '', $lenght);
+        }else {
+            $type = $stringType;
+            $lenght = 0;
+        }
+
+        return [$type, $lenght];
     }
 
     /**
