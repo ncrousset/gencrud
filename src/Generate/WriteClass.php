@@ -65,14 +65,14 @@ trait WriteClass
 
                 $typeField = [
                     'int' => 'FieldInt',
-                    'string' => 'FieldString',
+                    'varchar' => 'FieldString',
                     'text' => 'FieldText',
                     'blob' => 'FIeldBoolean'
                 ];
 
-                var_dump($this->getTypeAndLenght($column->Type));
+                $type = $this->getTypeAndLenght($column->Type);
 
-                $classFieldInt = 'FieldInt'; //Depends on $colums->Type
+                $classFieldInt = $typeField[$type[0]]; //Depends on $colums->Type
 
                 $strEntity = "$%s = (new %s(new %s('%s')));";
                 $str .= PHP_EOL."\t\t". sprintf(
