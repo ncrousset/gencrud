@@ -30,6 +30,13 @@ class Field implements FieldSchemaInterface
     public $maxLength = null;
 
     /**
+     * Min length of field and input form
+     *
+     * @var null
+     */
+    public $minLength = null;
+
+    /**
      * @return void
      */
     public function nullable()
@@ -61,5 +68,15 @@ class Field implements FieldSchemaInterface
     public function setMaxLength($length)
     {
         $this->maxLength = $length;
+    }
+
+    /**
+     * Set the minLength
+     *
+     * @param integer$length
+     */
+    public function setMinLength($length)
+    {
+        $this->minLength = $length;
     }
 }
