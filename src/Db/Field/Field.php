@@ -63,7 +63,7 @@ class Field implements FieldSchemaInterface
     /**
      * Set the maxLength
      *
-     * @param $length
+     * @param integer $length
      */
     public function setMaxLength($length)
     {
