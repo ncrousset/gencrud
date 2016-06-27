@@ -36,6 +36,11 @@ class TableSchema
 
     }
 
+    /**
+     * If the table exists in the schema
+     *
+     * @return bool
+     */
     public function hasTable()
     {
         return $this->shema->hasTable($this->tableName);

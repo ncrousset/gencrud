@@ -64,6 +64,10 @@ class GenerateMaintCommand extends Command
                 $table = null;
 
                 if($table = $this->option('table')) {
+                    if(!(new TableSchema($table))->hasTable()) {
+                        $this->error("There is a table called ".$table);
+                        $this->info("Fin");
+                    }
                     $this->info("Table name: $table");
                 }
 
