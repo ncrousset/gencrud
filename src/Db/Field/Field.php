@@ -21,7 +21,13 @@ class Field implements FieldSchemaInterface
      * @var bool
      */
     public $hidden = true;
-    
+
+    /**
+     * Max length of field and input form
+     *
+     * @var null
+     */
+    public $maxLength = null;
 
     /**
      * @return void
@@ -45,5 +51,15 @@ class Field implements FieldSchemaInterface
     public function hidden()
     {
         $this->hidden = true;
+    }
+
+    /**
+     * Set the maxLength
+     *
+     * @param $length
+     */
+    public function setMaxLength($length)
+    {
+        $this->maxLength = $length;
     }
 }
