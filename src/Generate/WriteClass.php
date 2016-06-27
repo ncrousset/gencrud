@@ -20,7 +20,7 @@ trait WriteClass
      */
     public function openClass($file, $nameClass)
     {
-        fwrite($file, "class $nameClass".PHP_EOL. "{".PHP_EOL);
+        fwrite($file, "class ".ucfirst($nameClass).PHP_EOL. "{".PHP_EOL);
     }
 
     /**
