@@ -81,6 +81,7 @@ trait WriteClass
 
                 $str .= ($column->Null !== 'YES') ?"":PHP_EOL."\t\t".sprintf("$%s->nullable();", $column->Field);
                 $str .= ($column->Key !== 'PRI') ?"":PHP_EOL."\t\t".sprintf("$%s->primary();", $column->Field);
+                $str .= ($type[1] > 0) ? PHP_EOL."\t\t".sprintf("$%s->setMaxLength(%d);", $column->Field,  $type[1]):"";
 
                 $str .= PHP_EOL;
             }
