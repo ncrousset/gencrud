@@ -22,7 +22,7 @@ class GenerateMaintCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'gencrud:generate {name} {--table=}';
+    protected $signature = 'make:gencrud {name} {--table=}';
 
     /**
      * The console command instance
